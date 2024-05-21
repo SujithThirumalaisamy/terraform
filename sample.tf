@@ -319,28 +319,21 @@ resource "aws_iam_policy" "lab-etl-user_policy" {
       {
         Effect = "Allow",
         Action = [
-          "s3:ListBucket",
-          "s3:GetBucketLocation"
+          "s3:*"
         ],
         Resource = "arn:aws:s3:::lab-etl-s3"
       },
       {
         Effect = "Allow",
         Action = [
-          "s3:GetObject",
-          "s3:PutObject",
-          "s3:DeleteObject"
+          "s3:*"
         ],
         Resource = "arn:aws:s3:::lab-etl-s3/*"
       },
       {
         Effect = "Allow",
         Action = [
-          "dynamodb:PutItem",
-          "dynamodb:GetItem",
-          "dynamodb:DeleteItem",
-          "dynamodb:Scan",
-          "dynamodb:Query"
+          "dynamodb:*"
         ],
         Resource = [
           "arn:aws:dynamodb:ap-south-1:lab-etl-glue-job:table/orders"
@@ -349,9 +342,7 @@ resource "aws_iam_policy" "lab-etl-user_policy" {
       {
         Effect = "Allow",
         Action = [
-          "glue:StartJobRun",
-          "glue:GetJobRun",
-          "glue:BatchGetJobs"
+          "glue:*"
         ],
         Resource = "arn:aws:glue:ap-south-1:lab-etl-glue-job:job/lab-etl-glue-job"
       },
